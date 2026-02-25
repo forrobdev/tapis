@@ -6,18 +6,18 @@
 
 <template>
     <nav>
-        <button @click="$emit('home')">
+        <RouterLink class="item" to="/">
             <img src="../assets/icons/home.png" alt="Accueil">
-            <a>Accueil</a>
-        </button>
-        <button @click="$emit('add')">
+            <p>Accueil</p>
+        </RouterLink>
+        <RouterLink class="item" to="/add">
             <img src="../assets/icons/add.png" alt="Ajouter une session">
-            <a>Ajouter</a>
-        </button>
-        <button @click="$emit('sessions')">
+            <p>Ajouter</p>
+        </RouterLink>
+        <RouterLink class="item" to="/sessions">
             <img src="../assets/icons/sessions.png" alt="Toutes les sessions">
-            <a>Sessions</a>
-        </button>
+            <p>Sessions</p>
+        </RouterLink>
     </nav>
 </template>
 
@@ -32,7 +32,7 @@
         background-color: black;
     }
 
-    button {
+    .item {
         background-color: transparent;
         border: none;
         padding: 0;
@@ -40,9 +40,10 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        text-decoration: none;
     }
 
-    button img {
+    .item img {
         height: 40px;
         width: auto;
     }
