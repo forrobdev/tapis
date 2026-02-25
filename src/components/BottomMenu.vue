@@ -1,8 +1,4 @@
-<script>
-    export default {
-        emits: ['home','add','sessions']
-    }
-</script>
+<script></script>
 
 <template>
     <nav>
