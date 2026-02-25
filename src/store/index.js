@@ -1,4 +1,7 @@
 import { reactive } from "vue";
+import blackjackIcon from "@/assets/img/bj.png"
+import rouletteIcon from "@/assets/img/roulette.png"
+import machineIcon from "@/assets/img/machine.png"
 
 export const store = reactive({
     sessions: [
@@ -14,21 +17,29 @@ export const store = reactive({
     games: [
         {
             id: 0,
-            name: "Blackjack",
+            name: "BLACKJACK",
             desc: "Blablabla 21 blablabla",
-            icon: "../assets/icons/add.png"
+            icon: blackjackIcon
         },
         {
             id: 1,
-            name: "Roulette",
+            name: "ROULETTE",
             desc: "Roulette roulette roulette roulette",
-            icon: "assets/icons/add.png"
+            icon: rouletteIcon
         },
         {
             id: 1,
-            name: "Machine à sous",
+            name: "MACHINE À SOUS",
             desc: "Roulette roulette roulette roulette",
-            icon: "assets/icons/add.png"
+            icon: machineIcon
         },
     ]
+})
+
+export const price = reactive({
+    newPrice: 0,
+    checkPrice() {
+        
+    }
+
 })

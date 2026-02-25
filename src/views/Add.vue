@@ -2,12 +2,17 @@
 import BottomMenu from '@/components/BottomMenu.vue';
 import GameCard from '@/components/GameCard.vue';
 import { store } from '@/store/index.js';
+import InputPrice from '@/components/InputPrice.vue';
 
 </script>
 
 <template>
-    <h1>Ajouter une session</h1>
-    <input type="number" placeholder="Montant de la session">
+    <!-- <h1>Ajouter une session</h1> -->
+    <!-- <div class="fakeinput">
+        <input type="tel" placeholder="0,00€">
+        <span>€</span>
+    </div> -->
+    <InputPrice/>
     <div class="result">
         <button id="win">Gagné</button>
         <button id="loose">Perdu</button>
@@ -36,9 +41,11 @@ import { store } from '@/store/index.js';
 </template>
 
 <style scoped>
+
     .slider {
         display: flex;
         overflow-y: scroll;
         gap: 20px;
     }
+
 </style>
