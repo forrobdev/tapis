@@ -3,6 +3,11 @@ import BottomMenu from '@/components/BottomMenu.vue';
 import GameCard from '@/components/GameCard.vue';
 import { store } from '@/store/index.js';
 import InputPrice from '@/components/InputPrice.vue';
+import ResultButton from '@/components/ResultButton.vue';
+import { ref } from 'vue'
+
+const win = ref(true)
+
 
 </script>
 
@@ -14,8 +19,10 @@ import InputPrice from '@/components/InputPrice.vue';
     </div> -->
     <InputPrice/>
     <div class="result">
-        <button id="win">Gagné</button>
-        <button id="loose">Perdu</button>
+        <ResultButton name="Gagné" @clicked="win = true" :selected="win" selectedClass="winner"/>
+        <ResultButton name="Perdu" @clicked="win = false" :selected="!win" selectedClass="looser"/>
+        <!-- <button id="win">Gagné</button>
+        <button id="loose">Perdu</button> -->
     </div>
     <div class="subtitle">
         <h2>Jeu</h2>
@@ -36,7 +43,7 @@ import InputPrice from '@/components/InputPrice.vue';
         <button>1h30</button>
         <button>2h</button>
     </div>
-    <button>Ajouter la session</button>
+    <button @click="store.addSession()">Ajouter la session</button>
     <BottomMenu/>
 </template>
 
@@ -55,7 +62,7 @@ import InputPrice from '@/components/InputPrice.vue';
         gap: 20px;
     }
 
-    .result button {
+    /* .result button {
         background-color: transparent;
         border: solid #CACACA 1px;
         border-radius: 100px;
@@ -65,6 +72,6 @@ import InputPrice from '@/components/InputPrice.vue';
         font-family: "Poppins", sans-serif;
         font-weight: 500;
         font-style: normal;
-    }
+    } */
 
 </style>

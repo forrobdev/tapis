@@ -14,6 +14,17 @@ export const store = reactive({
             id: 0
         }
     ],
+    addSession() {
+        const newId = this.sessions[this.sessions.length - 1].id + 1
+        console.log("New id :", newId)
+        this.sessions.push({
+            duration: price.newDuration,
+            amount: price.newPrice,
+            win: price.newWin,
+            timeStamp: Date.now(),
+            id: newId
+        })
+    },
     games: [
         {
             id: 0,
@@ -38,4 +49,6 @@ export const store = reactive({
 
 export const price = reactive({
     newPrice: "",
+    newDuration: 19,
+    newWin: true,
 })

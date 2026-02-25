@@ -10,14 +10,12 @@ h2 {
     font-weight: 500;
 }
 
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+.winner {
+  background-color: rgb(210, 146, 28);
+  filter: drop-shadow(0 0 30px rgb(210, 183, 28));
 }
 
-/* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
+.looser {
+  background-color: rgb(248, 72, 41);;
+  filter: drop-shadow(0 0 30px rgb(248, 72, 41));
 }
