@@ -37,9 +37,5 @@ export const store = reactive({
 })
 
 export const price = reactive({
-    newPrice: 0,
-    checkPrice() {
-        
-    }
-
+    newPrice: "",
 })

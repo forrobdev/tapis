@@ -48,4 +48,23 @@ import InputPrice from '@/components/InputPrice.vue';
         gap: 20px;
     }
 
+    .result {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .result button {
+        background-color: transparent;
+        border: solid #CACACA 1px;
+        border-radius: 100px;
+        color: #cacaca;
+        width: 130px;
+        height: 40px;
+        font-family: "Poppins", sans-serif;
+        font-weight: 500;
+        font-style: normal;
+    }
+
 </style>
