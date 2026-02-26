@@ -3,28 +3,19 @@ import blackjackIcon from "@/assets/img/bj.png"
 import rouletteIcon from "@/assets/img/roulette.png"
 import machineIcon from "@/assets/img/machine.png"
 
-export const store = reactive({
+import { useStorage } from '@vueuse/core'
+
+export const store = useStorage("store",{
     sessions: [
 	    {
             duration: 10,
-            amount: 999,
-            win: true,
+            start: 10,
+            end: 100,
             gameId: 0,
-            timeStamp: 87628762,
+            timeStamp: 1772011555,
             id: 0
-        }
+        },
     ],
-    addSession() {
-        const newId = this.sessions[this.sessions.length - 1].id + 1
-        console.log("New id :", newId)
-        this.sessions.push({
-            duration: price.newDuration,
-            amount: price.newPrice,
-            win: price.newWin,
-            timeStamp: Date.now(),
-            id: newId
-        })
-    },
     games: [
         {
             id: 0,
@@ -39,7 +30,7 @@ export const store = reactive({
             icon: rouletteIcon
         },
         {
-            id: 1,
+            id: 2,
             name: "MACHINE À SOUS",
             desc: "Roulette roulette roulette roulette",
             icon: machineIcon
@@ -47,8 +38,15 @@ export const store = reactive({
     ]
 })
 
-export const price = reactive({
-    newPrice: "",
-    newDuration: 19,
-    newWin: true,
-})
+export const addSession = (duration,start,end,gameId) => {
+        const newId = store.sessions[store.sessions.length - 1].id + 1
+        console.log("New id :", newId)
+        store.sessions.push({
+            duration: duration,
+            start: start,
+            end: end,
+            gameId: gameId,
+            timeStamp: new Date().getTime(),
+            id: newId
+        })
+}

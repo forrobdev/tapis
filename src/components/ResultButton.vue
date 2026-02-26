@@ -1,16 +1,24 @@
-<script>
-    import { price } from '@/store';
+<script setup>
+    import { computed } from 'vue';
 
-    export default {
-        props: ['name','selected',"selectedClass"],
-        emits: ['clicked']
-    }
+    const props = defineProps(['name','selected',"selectedClass"])
+    defineEmits(['clicked'])
+
+    const setClass = computed(() => {
+        if (props.selected) {
+            return "selected" + " " + props.selectedClass
+        } else {
+            return ""
+        }
+    })
+
 
 </script>
 
 <template>
     <!-- {{ selected }} -->
-    <button @click="$emit(`clicked`)" :class="[{ selected: selected }, selectedClass]">{{ name }}</button>
+    <!-- <button @click="$emit(`clicked`)" :class="{ selected: selected, [selectedClass]: selected }">{{ name }}</button> -->
+    <button @click="$emit('clicked')" :class="setClass">{{ name }}</button>
 </template>
 
 <style scoped>

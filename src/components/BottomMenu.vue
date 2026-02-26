@@ -26,6 +26,8 @@
         justify-content: space-around;
         align-items: center;
         background-color: black;
+        position: absolute;
+        bottom: 0;
     }
 
     .item {
