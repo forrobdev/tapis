@@ -41,7 +41,7 @@
   </div>
 
   <div class="sessions">
-    <Session v-for="n in isEnoughBig" :session="store.value.sessions[n-1]"/>
+    <Session v-for="n in isEnoughBig" :session="store.sessions[n-1]"/>
     <RouterLink class="item" to="/add">
       <div class="addSessionCard">
         <img src="../assets/icons/add.png" alt="Ajouter une session">
