@@ -7,7 +7,7 @@
     defineEmits(['clicked'])
 
     const getGame = computed(() => {
-        const game = store.games.find(item => item.id === props.session.id);
+        const game = store.value.games.find(item => item.id === props.session.id);
         return game
     })
 

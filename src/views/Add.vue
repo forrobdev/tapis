@@ -63,7 +63,7 @@
     </div>
 
     <div class="slider">
-        <GameCard v-for="item in store.games" :game="item" :key="item.id" @clicked="gameId = item.id" :gameId="gameId"/>
+        <GameCard v-for="item in store.value.games" :game="item" :key="item.id" @clicked="gameId = item.id" :gameId="gameId"/>
     </div>
 
     <div class="subtitle">
@@ -88,7 +88,7 @@
 
     <button @click="addSession(time,start,end,gameId)">Ajouter la session</button>
 
-    {{ store.sessions }}
+    {{ store.value.sessions }}
     <!-- <BottomMenu/> -->
 </template>
 

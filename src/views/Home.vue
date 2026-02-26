@@ -7,7 +7,7 @@
 
   const getAllGains = computed(() => {
     let amount = 0
-    store.sessions.forEach(element => {
+    store.value.sessions.forEach(element => {
       amount += element.end - element.start
     });
     return forceSign.format(amount)
@@ -20,10 +20,10 @@
 
   //Est-ce que la liste sessions a plus de 3 items ?
   const isEnoughBig = computed(() => {
-    if (store.sessions.length >= 3) {
+    if (store.value.sessions.length >= 3) {
       return 3
     } else {
-      return store.sessions.length
+      return store.value.sessions.length
     }
   })
 
@@ -41,7 +41,7 @@
   </div>
 
   <div class="sessions">
-    <Session v-for="n in isEnoughBig" :session="store.sessions[n-1]"/>
+    <Session v-for="n in isEnoughBig" :session="store.value.sessions[n-1]"/>
     <RouterLink class="item" to="/add">
       <div class="addSessionCard">
         <img src="../assets/icons/add.png" alt="Ajouter une session">
