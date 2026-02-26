@@ -18,7 +18,6 @@
 </template>
 
 <style scoped>
-    @import url(../css/reset.css);
 
     nav {
         width: 100%;

@@ -2,20 +2,12 @@ import { reactive } from "vue";
 import blackjackIcon from "@/assets/img/bj.png"
 import rouletteIcon from "@/assets/img/roulette.png"
 import machineIcon from "@/assets/img/machine.png"
+import router from "@/router";
 
 import { useStorage } from '@vueuse/core'
 
 export const store = useStorage("store",{
-    sessions: [
-	    {
-            duration: 10,
-            start: 10,
-            end: 100,
-            gameId: 0,
-            timeStamp: 1772011555,
-            id: 0
-        },
-    ],
+    sessions: [],
     games: [
         {
             id: 0,
@@ -39,9 +31,9 @@ export const store = useStorage("store",{
 })
 
 export const addSession = (duration,start,end,gameId) => {
-        const newId = store.sessions[store.sessions.length - 1].id + 1
+        const newId = new Date().getTime()
         console.log("New id :", newId)
-        store.sessions.push({
+        store.value.sessions.push({
             duration: duration,
             start: start,
             end: end,
@@ -49,4 +41,5 @@ export const addSession = (duration,start,end,gameId) => {
             timeStamp: new Date().getTime(),
             id: newId
         })
+    router.push('/')
 }

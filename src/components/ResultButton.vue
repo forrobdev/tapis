@@ -41,4 +41,14 @@
         color: #fff;
     }
 
+    .winner {
+        background-color: rgb(210, 146, 28) !important;
+        filter: drop-shadow(0 0 30px rgb(210, 183, 28));
+    }
+
+    .looser {
+        background-color: rgb(248, 72, 41) !important;
+        filter: drop-shadow(0 0 30px rgb(248, 72, 41));
+    }
+
 </style>

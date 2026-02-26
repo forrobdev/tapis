@@ -44,7 +44,7 @@
     }
 
     .inputBox {
-        border: solid 2px;
+        border: solid 3px;
         border-radius: 18px;
         display: flex;
         flex-direction: column;
@@ -52,12 +52,22 @@
         width: fit-content;
     }
 
-    .winning {
+    .winning, .winner {
         border-color: rgb(210, 146, 28);
     }
 
-    .loosing {
+    .loosing, .looser {
         border-color: rgb(248, 72, 41);
+    }
+
+    .winnerButton {
+        background-color: rgb(210, 146, 28) !important;
+        filter: drop-shadow(0 0 30px rgb(210, 183, 28));
+    }
+
+    .looserButton {
+        background-color: rgb(248, 72, 41) !important;
+        filter: drop-shadow(0 0 30px rgb(248, 72, 41));
     }
 
     button {

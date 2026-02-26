@@ -6,25 +6,27 @@
     const props = defineProps(['session'])
     defineEmits(['clicked'])
 
+    console.log(props.session.id)
+
     const getGame = computed(() => {
-        const game = store.value.games.find(item => item.id === props.session.id);
+        const game = store.value.games.find(item => item.id === props.session.gameId)
         return game
     })
 
     //Redonner le signe devant le nombre
     const forceSign = new Intl.NumberFormat('fr-FR', {
-        signDisplay: 'exceptZero' // Affiche + ou - sauf pour 0
+        signDisplay: 'exceptZero'
     });
 
-    const timeAgo = useTimeAgo(new Date(props.session.timeStamp*1000))
+    const timeAgo = useTimeAgo(new Date(props.session.timeStamp))
 
 </script>
 
 <template>
-
+<!-- {{ store }} -->
 <div class="sessionCard">
     <div class="left">
-        <img :src=getGame.icon alt="BackJack">
+        <img :src="getGame.icon" alt="BackJack">
         <div class="title">
             <p id="game">{{ getGame.name }}</p>
             <p id="time">{{session.duration + " min • " + timeAgo}}</p>

@@ -50,8 +50,8 @@
     </div>
 
     <div class="inputs">
-        <InputPrice @input="checkPrice($event,true)" inputClass="winning" buttonClass="winner" text="Arrivé avec"/>
-        <InputPrice @input="checkPrice($event,false)" inputClass="loosing" buttonClass="looser" text="Reparti avec"/>
+        <InputPrice @input="checkPrice($event,true)" inputClass="winning" buttonClass="winnerButton" text="Arrivé avec"/>
+        <InputPrice @input="checkPrice($event,false)" inputClass="loosing" buttonClass="looserButton" text="Reparti avec"/>
     </div>
     <div class="error" v-show="priceError">
         <img src="../assets/icons/caution.png" alt="Attention">
@@ -80,15 +80,10 @@
         <button @click="time = 120">2h</button>
     </div>
 
-    {{ gameId }}
-    {{ priceError }}
-    {{ start }}
-    {{ end }}
-    {{ time }}
+    <div class="buttonContainer">
+        <button id="add" @click="addSession(time,start,end,gameId)">Ajouter la session</button>
+    </div>
 
-    <button @click="addSession(time,start,end,gameId)">Ajouter la session</button>
-
-    {{ store.sessions }}
     <!-- <BottomMenu/> -->
 </template>
 
@@ -144,5 +139,26 @@
         height: 20px;
         width: auto;
         transform: rotateZ(180deg);
+    }
+
+    .buttonContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #add {
+        cursor: pointer;
+        border-radius: 100px;
+        width: 90%;
+        height: 60px;
+        margin-top: 50px;
+        margin-bottom: 200px;
+        font-weight: 700;
+        font-size: 20px;
+        color: #fff;
+        border: none;
+        background-color: rgb(210, 146, 28) !important;
+        filter: drop-shadow(0 0 30px rgb(210, 183, 28));
     }
 </style>
