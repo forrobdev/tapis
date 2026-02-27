@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue';
+import { computed, onMounted } from 'vue';
 import { store } from '@/store';
 import { useTimeAgo } from '@vueuse/core'
 import gsap from 'gsap';
@@ -20,7 +20,24 @@ const forceSign = new Intl.NumberFormat('fr-FR', {
 
 const timeAgo = useTimeAgo(new Date(props.session.timeStamp))
 
-
+//Animation apparition
+onMounted(() => {
+    gsap.fromTo(".sessionCard", 
+        { 
+        opacity: 0, 
+        scale: 0.8,
+        y: 20
+        },
+        {
+        opacity: 1,
+        scale: 1,
+        y: 0,
+        duration: 0.4,
+        ease: "back.out(1.5)",
+        stagger: 0.1
+        }
+    )
+})
 
 </script>
 

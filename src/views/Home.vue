@@ -2,7 +2,7 @@
   import BottomMenu from '@/components/BottomMenu.vue';
   import InputPrice from '@/components/InputPrice.vue';
   import { store } from '@/store';
-  import { computed } from 'vue';
+  import { computed, onMounted } from 'vue';
   import SessionCard from '@/components/SessionCard.vue';
   import Stat from '@/components/Stat.vue';
   import gsap from 'gsap';
@@ -117,15 +117,6 @@
     stats.push(statAverageAmountWin.value)
 
     return stats
-  })
-
-  //Animation apparition
-  gsap.to(".sessionCard", {
-      opacity: 1,
-      scale: 1,
-      duration: 0.3,
-      ease: "power2.in",
-      stagger: 0.1
   })
 
 </script>
