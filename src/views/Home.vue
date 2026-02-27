@@ -5,6 +5,7 @@
   import { computed } from 'vue';
   import SessionCard from '@/components/SessionCard.vue';
   import Stat from '@/components/Stat.vue';
+  import gsap from 'gsap';
 
   // Icones
   import blackjackIcon from "@/assets/img/bj.png"
@@ -118,6 +119,14 @@
     return stats
   })
 
+  //Animation apparition
+  gsap.to(".sessionCard", {
+      opacity: 1,
+      scale: 1,
+      duration: 0.3,
+      ease: "power2.in",
+      stagger: 0.1
+  })
 
 </script>
 

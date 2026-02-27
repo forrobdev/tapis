@@ -2,6 +2,7 @@
 import { computed } from 'vue';
 import { store } from '@/store';
 import { useTimeAgo } from '@vueuse/core'
+import gsap from 'gsap';
 
 const props = defineProps(['session'])
 
@@ -18,6 +19,8 @@ const forceSign = new Intl.NumberFormat('fr-FR', {
 });
 
 const timeAgo = useTimeAgo(new Date(props.session.timeStamp))
+
+
 
 </script>
 
@@ -39,6 +42,7 @@ const timeAgo = useTimeAgo(new Date(props.session.timeStamp))
 </template>
 
 <style scoped>
+
 .sessionCard {
     background-color: #fff;
     border-radius: 20px;
