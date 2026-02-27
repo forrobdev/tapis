@@ -2,7 +2,7 @@
 
     import { store } from '@/store/index.js';
 
-    defineProps(['inputClass',"text", 'buttonClass','disabled','price'])
+    defineProps(['inputClass',"text", 'buttonClass','disabled','price','value'])
     defineEmits(['input'])
 
 </script>
@@ -11,7 +11,7 @@
     <div class="inputBox" :class="inputClass">
         <button :class="buttonClass">{{ text }}</button>
         <div class="fakeinput">
-            <input type="number" placeholder="0,00" @input="$emit('input', $event.target.value)" v-if="!disabled">
+            <input type="number" :placeholder="value" @input="$emit('input', $event.target.value)" v-if="!disabled">
             <span>{{ price }}€</span>
         </div>
     </div>

@@ -19,7 +19,7 @@
     .statCard {
         border: solid 2px #CACACA;
         border-radius: 40px;
-        height: 200px;
+        height: 220px;
         width: 95%;
         display: flex;
         flex-direction: column;

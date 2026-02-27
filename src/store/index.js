@@ -43,3 +43,26 @@ export const addSession = (duration,start,end,gameId) => {
         })
     router.push('/')
 }
+
+export const deleteSession = (sessionId) => {
+    //Récupérer l'objet
+    const session = store.value.sessions.find(item => item.id === sessionId)
+
+    //Récupérer l'index
+    const index = store.value.sessions.indexOf(session)
+
+    store.value.sessions.splice(index,1)
+
+    router.push('/')
+}
+
+export const saveSession = (time,start,end,gameId,sessionId) => {
+    const session = store.value.sessions.find(item => item.id === sessionId)
+
+    session.duration = time
+    session.start = start
+    session.end = end
+    session.gameId = gameId
+
+    router.push('/')
+}

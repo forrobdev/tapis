@@ -1,11 +1,12 @@
 <script setup>
     import BottomMenu from '@/components/BottomMenu.vue';
     import GameCard from '@/components/GameCard.vue';
-    import { store, addSession } from '@/store/index.js';
+    import { store, addSession, deleteSession, saveSession } from '@/store/index.js';
     import InputPrice from '@/components/InputPrice.vue';
     import ResultButton from '@/components/ResultButton.vue';
     import { ref } from 'vue'
     import { computed } from 'vue';
+    import { useRoute } from 'vue-router'
 
     // const win = ref(true)
     let gameId = ref(0)
@@ -17,23 +18,17 @@
 
     function checkPrice(price,isStarting) {
         console.log("Salut la team")
-        if (price > 9999) {
-            console.log("C'est trop grand")
+        if (price > 99999) {
             priceError.value = "Veuillez saisir un montant inférieur à 9 999."
         } else if (price < 0) {
-            console.log("C'est inférieur à zéro")
             priceError.value = "Veuillez saisir un montant supérieur à 0."
         } else if (!/^\d+$/.test(price)) {
-            console.log("C'est pas un nombre")
             priceError.value = "Veuillez saisir un montant valide."
         } else {
-            console.log("C'est tout good")
             priceError.value = ""
             if (isStarting) {
                 start.value = price
-                console.log("C'est le starting")
             } else {
-                console.log("C'est le ending")
                 end.value = price
             }
         }
@@ -42,16 +37,37 @@
         console.log(priceError)
     }
 
+    //On récupère l'id
+    const route = useRoute()
+
+    const IDEditSession = parseInt(route.params.id)
+    console.log("ATTENTION !!", IDEditSession)
+
+    const editSession = store.value.sessions.find(item => item.id === IDEditSession) ?? {}
+    const editSessionStart = editSession.start ?? "0,00"
+    const editSessionEnd = editSession.end ?? "0,00"
+    gameId = ref(editSession.gameId) ?? ref(gameId)
+    let editSessionTime = new Date(editSession.timeStamp)
+    editSessionTime = editSessionTime.getDate() + "/" + editSessionTime.getMonth() + "/" + editSessionTime.getFullYear() + " à " + editSessionTime.getHours() + ":" + editSessionTime.getMinutes()
+
+
 </script>
 
 <template>
     <div class="subtitle">
-        <h2>Ajouter une session</h2>
+        <h2 v-show="!IDEditSession">Ajouter une session</h2>
+        <div v-show="IDEditSession">
+            <h2>Modifier la session</h2>
+            <p id="date">{{ editSessionTime }}</p>
+        </div>
+        <button class="iconButton" v-show="IDEditSession" @click="deleteSession(IDEditSession)">
+            <img src="../assets/icons/delete.png" alt="Supprimer la session">
+        </button>
     </div>
 
     <div class="inputs">
-        <InputPrice @input="checkPrice($event,true)" inputClass="winning" buttonClass="winnerButton" text="Arrivé avec"/>
-        <InputPrice @input="checkPrice($event,false)" inputClass="loosing" buttonClass="looserButton" text="Reparti avec"/>
+        <InputPrice @input="checkPrice($event,true)" inputClass="winning" buttonClass="winnerButton" text="Arrivé avec" :value="editSessionStart"/>
+        <InputPrice @input="checkPrice($event,false)" inputClass="loosing" buttonClass="looserButton" text="Reparti avec" :value="editSessionEnd"/>
     </div>
     <div class="error" v-show="priceError">
         <img src="../assets/icons/caution.png" alt="Attention">
@@ -81,13 +97,24 @@
     </div>
 
     <div class="buttonContainer">
-        <button id="add" @click="addSession(time,start,end,gameId)">Ajouter la session</button>
+        <button id="add" @click="addSession(time,start,end,gameId)" v-if="!IDEditSession">Ajouter la session</button>
+        <button id="add" @click="saveSession(time,start,end,gameId,IDEditSession)" v-if="IDEditSession">Sauvegarder</button>
     </div>
 
     <!-- <BottomMenu/> -->
 </template>
 
 <style scoped>
+
+    #date {
+        color: #CACACA;
+        font-weight: 300;
+        margin-top: 0px;
+    }
+
+    .subtitle {
+        align-items: flex-start;
+    }
 
     .slider {
         display: flex;

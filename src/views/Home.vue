@@ -3,7 +3,7 @@
   import InputPrice from '@/components/InputPrice.vue';
   import { store } from '@/store';
   import { computed } from 'vue';
-  import Session from '@/components/Session.vue';
+  import SessionCard from '@/components/SessionCard.vue';
   import Stat from '@/components/Stat.vue';
 
   // Icones
@@ -16,7 +16,7 @@
     store.value.sessions.forEach(element => {
       amount += element.end - element.start
     });
-    return forceSign.format(amount)
+    return amount
   })
 
   //Redonner le signe devant le nombre
@@ -122,8 +122,8 @@
 </script>
 
 <template>
-
-  <InputPrice :inputClass=getClassOnAmount[0] :buttonClass=getClassOnAmount[1] text="Gains totaux" disabled="true" :price="getAllGains"/>
+  
+  <InputPrice :inputClass=getClassOnAmount[0] :buttonClass=getClassOnAmount[1] text="Gains totaux" disabled="true" :price="forceSign.format(getAllGains)"/>
 
   <div class="subtitle">
     <h2>Récentes sessions</h2>
@@ -133,8 +133,8 @@
   </div>
 
   <div class="sessions">
-    <Session v-for="n in isEnoughBig" :session="reversedSessions[n-1]"/>
-    <RouterLink class="item" to="/add">
+    <SessionCard v-for="n in isEnoughBig" :session="reversedSessions[n-1]"/>
+    <RouterLink class="item" to="/session">
       <div class="addSessionCard">
         <img src="../assets/icons/add.png" alt="Ajouter une session">
         <p>Ajouter une session</p>
