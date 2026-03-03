@@ -37,6 +37,20 @@
         console.log(priceError)
     }
 
+    //Empêche d'ajouter une session si ya un problème dans un des input
+    function beforeAddingSession() {
+        if (priceError.value === "") {
+            addSession(time,start,end,gameId)
+        }
+    }
+
+    //Empêche de sauvegarder une session si ya un problème dans un des input
+    function beforeSavingSession() {
+        if (priceError.value === "") {
+            saveSession(time,start,end,gameId,IDEditSession)
+        }
+    }
+
     //On récupère l'id
     const route = useRoute()
 
@@ -86,19 +100,14 @@
         <h2>Temps de la session</h2>
     </div>
 
-    <div class="times">
-        <button @click="time = 10">10 min</button>
-        <button @click="time = 20">20 min</button>
-        <button @click="time = 30">30 min</button>
-        <button @click="time = 45">45 min</button>
-        <button @click="time = 60">1h</button>
-        <button @click="time = 90">1h30</button>
-        <button @click="time = 120">2h</button>
+    <p class="timeText">{{ time + "min" }}</p>
+    <div class="sliderContainer">
+        <input type="range" min="5" max="180" step="5" v-model.number="time" class="timeSlider">
     </div>
 
     <div class="buttonContainer">
-        <button id="add" @click="addSession(time,start,end,gameId)" v-if="!IDEditSession">Ajouter la session</button>
-        <button id="add" @click="saveSession(time,start,end,gameId,IDEditSession)" v-if="IDEditSession">Sauvegarder</button>
+        <button id="add" @click="beforeAddingSession()" v-if="!IDEditSession">Ajouter la session</button>
+        <button id="add" @click="beforeSavingSession()" v-if="IDEditSession">Sauvegarder</button>
     </div>
 
     <!-- <BottomMenu/> -->
@@ -188,4 +197,26 @@
         background-color: rgb(210, 146, 28) !important;
         filter: drop-shadow(0 0 30px rgb(210, 183, 28));
     }
+
+    .sliderContainer {
+        padding: 0 10px;
+        width: 90%;
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .timeSlider {
+        width: 95%;
+        height: 10px;
+        border-radius: 10px;
+        outline: none;
+    }
+
+    .timeText {
+        padding-left: 20px;
+        color: #CACACA;
+    }
+
+
 </style>

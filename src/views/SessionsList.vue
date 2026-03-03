@@ -59,19 +59,32 @@
         const gainA = a.end - a.start
         const gainB = b.end - b.start
       
-        if (selectedTypeSort === 0) {
-          return gainA - gainB
-        } else {
+        if (selectedTypeSort.value === 0) {
           return gainB - gainA
+        } else {
+          return gainA - gainB
         }
         
       })
-    } else if (selectedSort.value === 2) {
+    } else if (selectedSort.value === 1) {
+
       return [...sessions].sort((a, b) => {
-        const gainA = a.timeStamp
-        const gainB = b.timeStamp
+
+        if (selectedTypeSort.value === 0) {
+          return a.duration - b.duration
+        } else {
+          return b.duration - a.duration
+        }
+      })
+
+    } else if (selectedSort.value === 2) {
+
+      return [...sessions].sort((a, b) => {
+
+        const gainA = a.id
+        const gainB = b.id
       
-        if (selectedTypeSort === 0) {
+        if (selectedTypeSort.value === 0) {
           return gainB - gainA
         } else {
           return gainA - gainB
@@ -96,8 +109,6 @@
 </script>
 
 <template>
-  {{ selectedSort }}
-  {{ selectedTypeSort }}
   <div class="subtitle">
     <div>
       <h2>Toutes les sessions</h2>

@@ -7,6 +7,12 @@
   import Stat from '@/components/Stat.vue';
   import gsap from 'gsap';
 
+  
+
+
+
+
+
   // Icones
   import blackjackIcon from "@/assets/img/bj.png"
   import rouletteIcon from "@/assets/img/roulette.png"
@@ -156,7 +162,10 @@
 
   <div class="stats">
     <Stat v-for="stat in generateStats" :bigNumber="stat.bigNumber" :corps="stat.corps" :icon="stat.icon" :class="stat.class"/>
+    <Stat chart="true" class="big" corps="L'évolution de vos gains sur toutes vos sessions"/>
   </div>
+
+
 
 </template>
 
