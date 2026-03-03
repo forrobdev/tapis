@@ -11,7 +11,7 @@
     <div class="inputBox" :class="inputClass">
         <button :class="buttonClass">{{ text }}</button>
         <div class="fakeinput">
-            <input type="number" :placeholder="value" @input="$emit('input', $event.target.value)" v-if="!disabled">
+            <input type="number" :value="value" @input="$emit('input', $event.target.value)" v-if="!disabled">
             <span>{{ price }}€</span>
         </div>
     </div>

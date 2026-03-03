@@ -6,8 +6,6 @@ import gsap from 'gsap';
 
 const props = defineProps(['session'])
 
-console.log(props.session.id)
-
 const getGame = computed(() => {
     const game = store.value.games.find(item => item.id === props.session.gameId)
     return game

@@ -27,14 +27,22 @@
 
   //Est-ce que la liste sessions a plus de 3 items ?
   const isEnoughBig = computed(() => {
-    if (store.value.sessions.length >= 3) {
+    if (sortedSessions.value.length >= 3) {
       return 3
     } else {
-      return store.value.sessions.length
+      return sortedSessions.value.length
     }
   })
 
-  const reversedSessions = store.value.sessions.reverse()
+  // let reversedSessions = store.value.sessions
+  // reversedSessions = reversedSessions.rev
+  
+  //Trier par les plus récents
+  const sortedSessions = computed(() => {
+    return [...store.value.sessions].sort((a, b) => {
+      return b.timeStamp - a.timeStamp;
+    });
+  });
 
   //Est-ce qu'on est dans le négatif (dans le rouge)
   const getClassOnAmount = computed(() => {
@@ -133,7 +141,7 @@
   </div>
 
   <div class="sessions">
-    <SessionCard v-for="n in isEnoughBig" :session="reversedSessions[n-1]"/>
+    <SessionCard v-for="n in isEnoughBig" :session="sortedSessions[n-1]"/>
     <RouterLink class="item" to="/session">
       <div class="addSessionCard">
         <img src="../assets/icons/add.png" alt="Ajouter une session">
