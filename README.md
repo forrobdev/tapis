@@ -5,7 +5,7 @@ Application de statistiques sur des sessions de jeux au casino.
 
 ---
 
-## Précaution d'installation
+## Précautions d'installation 📥
 
 Commencez par cloner le projet
 ```bash
