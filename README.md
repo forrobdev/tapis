@@ -5,6 +5,31 @@ Application de statistiques sur des sessions de jeux au casino.
 
 ---
 
+## Précaution d'installation
+
+Commencez par cloner le projet
+```bash
+git clone https://github.com/forrobdev/tapis
+```
+
+N'oubliez pas d'installer npm ensuite
+```bash
+npm install
+```
+
+Enfin vous pouvez tester le projet en effectuant la commande
+```bash
+npm run dev
+```
+
+
+Pour tester sur mobile
+```bash
+npm run dev-mobile
+```
+
+---
+
 ## Page Accueil 🏠
 
 - Total des gains alltime (positif ou négatif)
